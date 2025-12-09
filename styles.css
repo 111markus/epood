@@ -1,0 +1,31 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  background-color: #eee;
+}
+
+#main-container {
+  background-color: rgb(106, 138, 243);
+  padding: 50px;
+}
+
+.product {
+  border: 2px solid black;
+  width: max-content;
+  padding: 10px;
+}
+
+.products-container {
+  display: grid;
+  grid-auto-flow: column;
+}
+
+#products-view {
+  display: grid;
+}
