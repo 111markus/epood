@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="et">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-pood</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        background-color: #eee;
+      }
+
+      #main-container {
+        background-color: lightblue;
+        padding: 50px;
+      }
+
+      .product {
+        border: 2px solid black;
+        width: max-content;
+        padding: 10px;
+      }
+
+      .products-container {
+        display: grid;
+        grid-auto-flow: column;
+      }
+
+      #products-view {
+        display: grid;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <a href="/ylesanne3-dom"><h1>E-pood</h1></a>
+      <div id="categories"></div>
+      <div>
+        <button id="favorites-button">Lemmikud</button>
+        <button id="cart-button">
+          Ostukorv (<span id="cart-count">0</span>)
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section id="main-container"></section>
+      <section id="detailed-view"></section>
+      <section id="cart-view"></section>
+      <section id="favorite-view"></section>
+    </main>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
