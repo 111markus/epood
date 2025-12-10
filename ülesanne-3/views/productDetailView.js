@@ -1,5 +1,5 @@
 export const dispalyProductDetailView = (product) => {
-  const container = document.getElementById("detailed-view");
+  const container = document.getElementById("main-container");
   container.innerHTML = "";
 
   const productCard = document.createElement("div");

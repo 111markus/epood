@@ -41,4 +41,4 @@ export class Customer {
   }
 }
 
-export const customerConstructor = new Customer("Maret");
+export const customerConstructor = new Customer("Mart");
