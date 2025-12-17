@@ -44,9 +44,9 @@ main {
 
 #favorites,
 .favorite-btn {
-  background-color: #f0f0f0;
+  background-color: #d7d7d7;
   border: none;
-  color: #888;
+  color: #000000;
   font-size: 18px;
   padding: 8px 14px;
   border-radius: 8px;
@@ -58,8 +58,7 @@ main {
 
 #favorites:hover,
 .favorite-btn:hover {
-  background-color: #e0e0e0;
-  color: #006aff;
+  background-color: #6b6b6b84;
 }
 
 /* TOOTE NIMI */
@@ -84,7 +83,7 @@ main {
 .product p:nth-of-type(2) {
   font-weight: 700;
   font-size: 20px;
-  color: #0a74ff;
+  color: #000000;
   margin-top: 12px;
   margin-bottom: 20px;
 }
@@ -92,9 +91,9 @@ main {
 /* OSTUKORVI NUPP */
 
 .product button:last-of-type {
-  background-color: #0a74ff;
+  background-color: #21f500;
   border: none;
-  color: white;
+  color: black;
   font-size: 14px;
   font-weight: 600;
   padding: 10px 16px;
@@ -105,5 +104,5 @@ main {
 }
 
 .product button:last-of-type:hover {
-  background-color: #005ed1;
+  background-color: #1ddc00;
 }
