@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "myBook",
+    "price": 3999.99,
+    "category": "Elektroonika"
+  },
+  {
+    "id": 2,
+    "name": "myPhone",
+    "price": 1099.99,
+    "category": "Elektroonika"
+  },
+  {
+    "id": 3,
+    "name": "myPad",
+    "price": 999.99,
+    "category": "Elektroonika"
+  }
+]
