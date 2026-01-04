@@ -1,27 +1,25 @@
-// import { Product } from "./constructors/Product.js";
 import { displayAllProductsView } from "./views/allProductsView.js";
 import { navigate } from "./router.js";
 import { getProductsDataFromJson } from "./api.js";
-
-/* const products = [
-  new Product(1, "Sülearvuti", 999.99, "Elektroonika"),
-  new Product(2, "Telefon", 599.99, "Elektroonika"),
-  new Product(3, "Tahvelarvuti", 299.99, "Elektroonika"),
-];
-*/
+import { cartConstructor } from "./constructors/Cart.js";
+import { customerConstructor } from "./constructors/Customer.js";
 
 const initApp = async () => {
   const homeButton = document.getElementById("home-button");
-  homeButton.onclick = () => initApp();
+  homeButton.onclick = () => displayAllProductsView(window.PRODUCTS || []);
 
   const favoritesButton = document.getElementById("favorites-button");
-  favoritesButton.onclick = () => navigate("favourites");
+  favoritesButton.onclick = () => navigate("favorites");
 
   const cartButton = document.getElementById("cart-button");
   cartButton.onclick = () => navigate("cart");
 
   const products = await getProductsDataFromJson();
-  displayAllProductsView();
+  // Store products globally so views/router can access them by id
+  window.PRODUCTS = products || [];
+  // Ensure cart count reflects any persisted items
+  cartConstructor.displayTotalItems();
+  displayAllProductsView(window.PRODUCTS);
 };
 
 document.addEventListener("DOMContentLoaded", initApp);

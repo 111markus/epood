@@ -3,17 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/32c1765656.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="./styles.css" />
     <title>E-pood</title>
   </head>
   <body>
     <header class="header">
-      <button id="home-button"><h1>E-pood</h1></button>
+      <button id="home-button">
+        <h1><i class="fa-solid fa-cart-shopping"></i>MyPood</h1>
+      </button>
       <div id="categories"></div>
       <div>
-        <button id="favorites-button">Lemmikud</button>
+        <button id="favorites-button">
+          <i class="fa-solid fa-star"></i> Lemmikud
+        </button>
         <button id="cart-button">
-          Ostukorv (<span id="cart-count">0</span>)
+          <i class="fa-solid fa-basket-shopping"></i> Ostukorv (<span
+            id="cart-count"
+            >0</span
+          >)
         </button>
       </div>
     </header>

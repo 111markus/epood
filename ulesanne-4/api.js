@@ -6,7 +6,13 @@ export const getProductsDataFromJson = async () => {
     const jsonData = await data.json();
     const constructedData = jsonData.map(
       (product) =>
-        new Product(product.id, product.name, product.price, product.category)
+        new Product(
+          product.id,
+          product.name,
+          product.price,
+          product.category,
+          product.description || ""
+        )
     );
     return constructedData;
   } catch (error) {

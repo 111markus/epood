@@ -3,18 +3,21 @@
     "id": 1,
     "name": "myBook",
     "price": 3999.99,
-    "category": "Elektroonika"
+    "category": "Elektroonika",
+    "description": "Suur ja võimas sülearvuti – 16GB RAM, 512GB SSD. Sobib suurepäraselt tööks."
   },
   {
     "id": 2,
     "name": "myPhone",
     "price": 1099.99,
-    "category": "Elektroonika"
+    "category": "Elektroonika",
+    "description": "Kaasaegne nutitelefon suurepärase kaamera ja pika aku kestvusega. Ekraan: 6.5\" OLED. Toetab kiiret laadimist."
   },
   {
     "id": 3,
     "name": "myPad",
     "price": 999.99,
-    "category": "Elektroonika"
+    "category": "Elektroonika",
+    "description": "Kerge ja õhuke tahvelarvuti lugemiseks ja meelelahutuseks. Aku kestvus kuni 12 tundi. Sobib ka joonistamiseks stylusega."
   }
 ]
