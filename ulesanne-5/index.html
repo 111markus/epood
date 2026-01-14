@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="et">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/32c1765656.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <title>E-pood</title>
+  </head>
+  <body>
+    <header class="header">
+      <button id="home-button">
+        <h1><i class="fa-solid fa-cart-shopping"></i>MyPood</h1>
+      </button>
+      <div id="categories"></div>
+      <div>
+        <button id="favorites-button">
+          <i class="fa-solid fa-star"></i> Lemmikud
+        </button>
+        <button id="cart-button">
+          <i class="fa-solid fa-basket-shopping"></i> Ostukorv (<span
+            id="cart-count"
+            >0</span
+          >)
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section id="main-container"></section>
+    </main>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

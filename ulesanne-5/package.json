@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "name": "ulesanne-5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "devDependencies": {},
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
