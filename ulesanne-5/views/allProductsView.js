@@ -105,6 +105,13 @@ export const displayAllProductsView = (products) => {
       const productCard = document.createElement("div");
       productCard.classList.add("product");
 
+      const img = document.createElement("img");
+      img.src = product.image;
+      img.alt = product.name;
+      img.style.width = "100%";
+      img.style.height = "200px";
+      img.style.objectFit = "contain";
+
       const title = document.createElement("h3");
       title.textContent = product.name;
       title.style.cursor = "pointer";
@@ -117,17 +124,17 @@ export const displayAllProductsView = (products) => {
       price.textContent = `Hind: $${product.price}`;
 
       const favButton = document.createElement("button");
+      favButton.classList.add("btn");
       favButton.textContent = customerConstructor
         .getAllFavorites()
-        .some((f) => f.product.id === product.id)
+        .includes(product.id)
         ? "Eemalda lemmikust"
         : "Lisa lemmikutesse";
-      favButton.onclick = (e) => {
-        e.stopPropagation();
+      favButton.onclick = () => {
         customerConstructor.toggleFavorites(product);
         favButton.textContent = customerConstructor
           .getAllFavorites()
-          .some((f) => f.product.id === product.id)
+          .includes(product.id)
           ? "Eemalda lemmikust"
           : "Lisa lemmikutesse";
       };
@@ -139,6 +146,7 @@ export const displayAllProductsView = (products) => {
         cartConstructor.addProduct(product, 1);
       };
 
+      productCard.appendChild(img);
       productCard.appendChild(title);
       productCard.appendChild(category);
       productCard.appendChild(price);

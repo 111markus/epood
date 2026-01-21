@@ -10,8 +10,15 @@ export const displayProductDetailView = (productId) => {
     return;
   }
 
-  const productCard = document.createElement("div");
-  productCard.classList.add("product");
+  const productWrapper = document.createElement("div");
+  productWrapper.classList.add("product-detail");
+
+  const img = document.createElement("img");
+  img.src = product.image;
+  img.alt = product.name;
+  img.style.width = "100%";
+  img.style.height = "200px";
+  img.style.objectFit = "contain";
 
   const title = document.createElement("h2");
   title.textContent = product.name;
@@ -35,32 +42,35 @@ export const displayProductDetailView = (productId) => {
   idP.textContent = `ID: ${product.id}`;
 
   const favButton = document.createElement("button");
+  favButton.classList.add("btn");
   favButton.textContent = customerConstructor
     .getAllFavorites()
-    .some((f) => f.product.id === product.id)
+    .includes(product.id)
     ? "Eemalda lemmikust"
     : "Lisa lemmikutesse";
   favButton.onclick = () => {
     customerConstructor.toggleFavorites(product);
     favButton.textContent = customerConstructor
       .getAllFavorites()
-      .some((f) => f.product.id === product.id)
+      .includes(product.id)
       ? "Eemalda lemmikust"
       : "Lisa lemmikutesse";
   };
 
   const addButton = document.createElement("button");
+  addButton.classList.add("btn");
   addButton.textContent = "Lisa ostukorvi";
   addButton.onclick = () => cartConstructor.addProduct(product, 1);
 
-  // order: title -> description -> category -> price -> id -> actions
-  productCard.appendChild(title);
-  if (desc) productCard.appendChild(desc);
-  productCard.appendChild(category);
-  productCard.appendChild(price);
-  productCard.appendChild(idP);
-  productCard.appendChild(favButton);
-  productCard.appendChild(addButton);
+  // order: image -> title -> description -> category -> price -> id -> actions
+  productWrapper.appendChild(img);
+  productWrapper.appendChild(title);
+  if (desc) productWrapper.appendChild(desc);
+  productWrapper.appendChild(category);
+  productWrapper.appendChild(price);
+  productWrapper.appendChild(idP);
+  productWrapper.appendChild(favButton);
+  productWrapper.appendChild(addButton);
 
-  container.append(productCard);
+  container.append(productWrapper);
 };

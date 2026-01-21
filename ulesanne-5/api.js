@@ -23,7 +23,7 @@ export async function fetchCategories() {
 export async function fetchProductsByCategory(category) {
   try {
     const res = await fetch(
-      "/api/products/category/" + encodeURIComponent(category)
+      "/api/products/category/" + encodeURIComponent(category),
     );
     return await res.json();
   } catch (e) {
@@ -43,8 +43,8 @@ export const getProductsDataFromJson = async () => {
           product.price,
           product.category,
           product.description || "",
-          product.image || ""
-        )
+          product.image || "",
+        ),
     );
     return constructedData;
   } catch (error) {

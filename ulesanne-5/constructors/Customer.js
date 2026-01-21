@@ -5,7 +5,7 @@ export class Customer {
     this.name = name;
     this.orderHistory = [];
     this.favorites = [];
-    // laadime serverist olemasolevad lemmikud (asünkroonne)
+    // laadime serverist olemasolevad lemmikud
     this.loadFavorites();
   }
 
@@ -20,7 +20,7 @@ export class Customer {
       console.log(
         `Tellimus ${
           index + 1
-        } - Kuupäev: ${order.orderDate.toDateString()}, Kogusumma: $${order.cart.calculateTotal()}`
+        } - Kuupäev: ${order.orderDate.toDateString()}, Kogusumma: $${order.cart.calculateTotal()}`,
       );
     });
   }
@@ -37,38 +37,17 @@ export class Customer {
     }
   }
 
-  async toggleFavorites(product) {
-    const existing = this.favorites.find(
-      (f) => Number(f.product?.id || f.id) === Number(product.id)
-    );
-    if (existing) {
-      // optimistlik update + DELETE to BE
-      this.favorites = this.favorites.filter(
-        (f) => Number((f.product || f).id) !== Number(product.id)
-      );
-      try {
-        await fetch(`/api/favorites/${product.id}`, { method: "DELETE" });
-      } catch (err) {
-        console.error("Failed to delete favorite", err);
-      }
+  toggleFavorites(product) {
+    const id = product.id;
+    if (this.favorites.includes(id)) {
+      this.favorites = this.favorites.filter((f) => f !== id);
     } else {
-      // optimistlik update + POST to BE
-      this.favorites.push({ product });
-      try {
-        await fetch("/api/favorites", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ product }),
-        });
-      } catch (err) {
-        console.error("Failed to add favorite", err);
-      }
+      this.favorites.push(id);
     }
   }
 
   getAllFavorites() {
-    // return normalized { product } array for backward compat
-    return this.favorites.map((f) => (f.product ? f : { product: f }));
+    return this.favorites;
   }
 }
 
