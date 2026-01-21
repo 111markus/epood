@@ -3,6 +3,7 @@ import { displayAllProductsView } from "./views/allProductsView.js";
 import { displayProductDetailView } from "./views/productDetailView.js";
 import { displayFavoritesView } from "./views/favoritesView.js";
 import { displayCartView } from "./views/cartView.js";
+import { customerConstructor } from "./constructors/Customer.js"; // added
 
 // Map named routes to path builders
 function routeToPath(route, param) {
@@ -31,8 +32,13 @@ export async function navigate(route, param) {
 }
 
 // Core router: resolve pathname to a view and render
-async function handleRoute(pathname) {
+export async function handleRoute(pathname) {
   const clean = pathname.replace(/\/+$/g, "");
+
+  // ensure favorites loaded before rendering so views read correct state
+  if (!customerConstructor.favoritesLoaded) {
+    await customerConstructor.loadFavorites();
+  }
 
   if (clean === "" || clean === "/" || clean === "/products") {
     const products = await getProductsDataFromJson();
@@ -48,7 +54,7 @@ async function handleRoute(pathname) {
   }
 
   if (clean === "/favorites") {
-    displayFavoritesView();
+    await displayFavoritesView();
     return;
   }
 

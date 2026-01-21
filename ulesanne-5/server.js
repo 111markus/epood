@@ -7,7 +7,7 @@ const crypto = require("crypto");
 const app = express();
 app.use(express.json());
 
-// Serve frontend static files from project folder (only current folder)
+// Serve frontend static files from project folder
 app.use(express.static(path.join(__dirname)));
 
 const PRODUCTS_FILE = path.join(__dirname, "products.json");
@@ -43,7 +43,7 @@ app.use((req, res, next) => {
       ? crypto.randomUUID()
       : crypto.randomBytes(16).toString("hex");
     // Set cookie so frontend keeps the same clientId across reloads
-    // HttpOnly to prevent tampering from JS; SameSite Lax to allow same-site requests
+    // HttpOnly to prevent tampering from JS;
     res.setHeader("Set-Cookie", `clientId=${clientId}; Path=/; SameSite=Lax`);
   }
   req.clientId = clientId;
@@ -67,7 +67,7 @@ async function ensureProducts() {
       }));
       await writeJson(PRODUCTS_FILE, products);
       console.log(
-        "Fetched products from fakestoreapi and saved to products.json"
+        "Fetched products from fakestoreapi and saved to products.json",
       );
     } catch (err) {
       console.error("Failed to fetch products:", err);
@@ -96,7 +96,7 @@ app.get("/api/products/:id", async (req, res) => {
 app.get("/api/categories", async (req, res) => {
   const products = await ensureProducts();
   const categories = Array.from(
-    new Set(products.map((p) => p.category))
+    new Set(products.map((p) => p.category)),
   ).filter(Boolean);
   res.json(categories);
 });
@@ -128,7 +128,7 @@ app.post("/api/favorites", async (req, res) => {
     return res.status(400).json({ error: "Missing product with id" });
 
   const exists = clientFavs.find(
-    (f) => Number((f.product || f).id) === Number(product.id)
+    (f) => Number((f.product || f).id) === Number(product.id),
   );
   if (exists) return res.status(409).json({ error: "Already exists" });
 
@@ -143,7 +143,7 @@ app.delete("/api/favorites/:productId", async (req, res) => {
   const all = await readJson(FAVORITES_FILE, {});
   const clientFavs = all[req.clientId] || [];
   const updated = clientFavs.filter(
-    (f) => Number((f.product || f).id) !== productId
+    (f) => Number((f.product || f).id) !== productId,
   );
   all[req.clientId] = updated;
   await writeJson(FAVORITES_FILE, all);
